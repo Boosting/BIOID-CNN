@@ -1,0 +1,20 @@
+set datafile separator ','
+
+set terminal png size 2000,500
+set output 'Training_BIOID.png'
+set title "Training BIOID"
+set xlabel "Iterations"
+
+plot '/home/wzleong/caffe/examples/BIOID_face/bioid_working_including_flip_datas/parsed_results/train_bioid_flip_updated.log.train' using 1:4  with line title "train loss",\
+     '/home/wzleong/caffe/examples/BIOID_face/bioid_working_including_flip_datas/parsed_results/train_bioid_flip_updated.log.test' using 1:4 with line title "test loss" 
+
+set term wxt 0 title 'Training BIOID 0'
+replot
+
+set terminal png size 1000,500
+set output 'Training_BIOID_zoom_in.png'
+
+plot '/home/wzleong/caffe/examples/BIOID_face/bioid_working_including_flip_datas/parsed_results/train_bioid_flip_updated.log.train' every ::157::2001 using 1:4  with line title "train loss",\
+     '/home/wzleong/caffe/examples/BIOID_face/bioid_working_including_flip_datas/parsed_results/train_bioid_flip_updated.log.test' every ::25::402 using 1:4 with line title "test loss" 
+
+
